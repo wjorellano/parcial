@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title>{% block title %}Administración{% endblock %}</title>
+   <meta name="viewport" content="width=device-width,initial-scale=1">
+
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+   <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+
+   <nav class="bg-white shadow mb-6">
+      <div class="max-w-7xl mx-auto px-4">
+         <div class="flex justify-between h-16">
+
+            <div class="flex items-center">
+               <span class="text-2xl font-bold text-blue-600">
+                  Administración
+               </span>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6 text-lg font-medium">
+               <a href="{% url 'administracion:empresa_list' %}" class="hover:text-blue-600">Empresas</a>
+               <a href="{% url 'administracion:departamento_list' %}" class="hover:text-blue-600">Departamentos</a>
+               <a href="{% url 'administracion:empleado_list' %}" class="hover:text-blue-600">Empleados</a>
+               <a href="{% url 'administracion:activo_list' %}" class="hover:text-blue-600">Activos</a>
+            </div>
+
+            <div class="md:hidden flex items-center">
+               <button id="mobile-menu-btn" class="focus:outline-none">
+                  <svg class="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+               </button>
+            </div>
+
+         </div>
+      </div>
+
+      <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 text-lg">
+         <a href="{% url 'administracion:empresa_list' %}" class="block py-2 hover:text-blue-600">Empresas</a>
+         <a href="{% url 'administracion:departamento_list' %}" class="block py-2 hover:text-blue-600">Departamentos</a>
+         <a href="{% url 'administracion:empleado_list' %}" class="block py-2 hover:text-blue-600">Empleados</a>
+         <a href="{% url 'administracion:activo_list' %}" class="block py-2 hover:text-blue-600">Activos</a>
+      </div>
+   </nav>
+
+   <div class="max-w-7xl mx-auto bg-white p-6 shadow rounded">
+      {% block content %}{% endblock %}
+   </div>
+
+   <script>
+      const btn = document.getElementById("mobile-menu-btn");
+      const menu = document.getElementById("mobile-menu");
+
+      btn.addEventListener("click", () => {
+         menu.classList.toggle("hidden");
+      });
+   </script>
+
+</body>
+
+</html>

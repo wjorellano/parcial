@@ -1,0 +1,9 @@
+{% extends "administracion/base.html" %}
+{% block content %}
+<h1>Confirmar borrado</h1>
+<p>¿Borrar {{ object }}?</p>
+<form method="post">{% csrf_token %}
+   <button class="btn btn-danger" type="submit">Sí, borrar</button>
+   <a class="btn btn-secondary" href="{% url 'administracion:empresa_list' %}">Cancelar</a>
+</form>
+{% endblock %}

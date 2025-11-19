@@ -1,0 +1,12 @@
+{% extends 'administracion/base.html' %}
+
+{% block content %}
+<h2>Eliminar Departamento</h2>
+<p>¿Eliminar el departamento <strong>{{ object }}</strong>?</p>
+
+<form method="post">
+   {% csrf_token %}
+   <button class="btn btn-danger">Eliminar</button>
+   <a href="{% url 'administracion:departamento_list' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'administracion/base.html' %}
+{% block content %}
+<h1>Empleados</h1>
+
+<a class="btn btn-primary mb-3" href="{% url 'administracion:empleado_create' %}">Nuevo Empleado</a>
+
+{% if empleados %}
+<table class="table">
+   <thead>
+      <tr>
+         <th>Nombre</th>
+         <th>Email</th>
+         <th>Departamento</th>
+         <th>Fecha ingreso</th>
+         <th>Acciones</th>
+      </tr>
+   </thead>
+   <tbody>
+      {% for e in empleados %}
+      <tr>
+         <td>{{ e.nombre }}</td>
+         <td>{{ e.email }}</td>
+         <td>{{ e.departamento.nombre }}</td>
+         <td>{{ e.fecha_ingreso }}</td>
+         <td>
+            <a href="{% url 'administracion:empleado_update' e.pk %}" class="btn btn-warning btn-sm">Editar</a>
+            <a href="{% url 'administracion:empleado_delete' e.pk %}" class="btn btn-danger btn-sm">Borrar</a>
+         </td>
+      </tr>
+      {% endfor %}
+   </tbody>
+</table>
+{% else %}
+<p>No hay empleados registrados.</p>
+{% endif %}
+
+{% endblock %}

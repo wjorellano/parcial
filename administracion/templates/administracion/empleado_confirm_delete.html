@@ -1,0 +1,12 @@
+{% extends 'administracion/base.html' %}
+
+{% block content %}
+<h2>Eliminar Empleado</h2>
+<p>¿Eliminar a <strong>{{ object.nombre }}</strong>?</p>
+
+<form method="post">
+   {% csrf_token %}
+   <button class="btn btn-danger">Eliminar</button>
+   <a href="{% url 'administracion:empleado_list' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}
