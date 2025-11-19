@@ -1,13 +1,8 @@
-# administracion/views.py
-
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import Empresa, Departamento, Empleado, Activo
 from .forms import EmpresaForm, DepartamentoForm, EmpleadoForm, ActivoForm
 
-# -----------------------------
-# EMPRESAS
-# -----------------------------
 class EmpresaListView(ListView):
     model = Empresa
     template_name = "administracion/empresa_list.html"
@@ -29,10 +24,6 @@ class EmpresaDeleteView(DeleteView):
     model = Empresa
     template_name = "administracion/empresa_confirm_delete.html"
     success_url = reverse_lazy("administracion:empresa_list")
-
-# =============================
-# DEPARTAMENTOS (CRUD completo)
-# =============================
 
 class DepartamentoListView(ListView):
     model = Departamento
@@ -56,10 +47,6 @@ class DepartamentoDeleteView(DeleteView):
     template_name = "administracion/departamento_confirm_delete.html"
     success_url = reverse_lazy("administracion:departamento_list")
 
-# =============================
-# EMPLEADOS (CRUD completo)
-# =============================
-
 class EmpleadoListView(ListView):
     model = Empleado
     template_name = "administracion/empleado_list.html"
@@ -82,9 +69,6 @@ class EmpleadoDeleteView(DeleteView):
     template_name = "administracion/empleado_confirm_delete.html"
     success_url = reverse_lazy("administracion:empleado_list")
 
-# =============================
-# ACTIVOS (CRUD completo)
-# =============================
 
 class ActivoListView(ListView):
     model = Activo
